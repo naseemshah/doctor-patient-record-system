@@ -38,8 +38,8 @@
             <p class="name font-weight-bold text-light my-2 mx-auto ">Nithin</p>
         </div>
         <div class="col col-lg-1 col-md-1 col-sm-3 col-3 ">
-            <img src="assets/img/naseem.jpg" alt="" class="dp rounded-circle img-thumbnail">
-            <p class="name font-weight-bold text-light my-2 mx-auto ">Naseem Shah - @ns4k_tv</p>
+            <img src="assets/img/Neeraj.jpg" alt="" class="dp rounded-circle img-thumbnail">
+            <p class="name font-weight-bold text-light my-2 mx-auto ">Neeraj jayaraj - @nj07</p>
         </div>
         
     </div>
@@ -52,7 +52,7 @@
                 <h5 class="card-title">Front-end</h5>
                 <ul>
                         <li>HTML+CSS</li>
-                        <li>Bootstrap 4</li>
+                        <li>Bootstrap</li>
                 </ul>
                 </div>
             </div>

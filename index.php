@@ -52,7 +52,7 @@
                 <h5 class="card-title">Front-end</h5>
                 <ul>
                         <li>HTML+CSS</li>
-                        <li>Bootstrap</li>
+                        <li>Bootstrap 4</li>
                 </ul>
                 </div>
             </div>

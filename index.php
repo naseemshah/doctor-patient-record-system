@@ -41,7 +41,10 @@
             <img src="assets/img/Neeraj.jpg" alt="" class="dp rounded-circle img-thumbnail">
             <p class="name font-weight-bold text-light my-2 mx-auto ">Neeraj jayaraj - @nj07</p>
         </div>
-        
+        <div class="col col-lg-1 col-md-1 col-sm-3 col-3 ">
+            <img src="assets/img/vahid.jpeg" alt="" class="dp rounded-circle img-thumbnail">
+            <p class="name font-weight-bold text-light my-2 mx-auto ">Vahid Ali - vahid</p>
+        </div>
     </div>
     <h3 class="text-white">Stack:</h3>
     <div class="row">

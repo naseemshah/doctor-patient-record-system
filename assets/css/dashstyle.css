@@ -149,6 +149,10 @@ ul ul a {
     font-size: 20px;
 }
 
+.header-content{
+    font-size: 40px;
+}
+
 /* Media Queries */
 
 @media (max-width: 768px) {
@@ -205,4 +209,13 @@ ul ul a {
     }
 }
 
+/*Form*/
 
+#input-phone::-webkit-outer-spin-button,
+#input-phone::-webkit-inner-spin-button{
+    -webkit-appearance: none;
+    margin: 0;
+}
+#input-phone{
+    -moz-appearance: textfield;
+}

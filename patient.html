@@ -8,11 +8,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/dashstyle.css">
-    <style>
-        .flex{
-            display: flex;
-        }
-    </style>
     <title>Dashboard</title>
 </head>
 <body>
@@ -22,19 +17,16 @@
             <div class="sidebar-header">
                 <p class="font-weight-bold text-light govtText" >Doctor X's Clinic</p>
                 
-                <h3 class="text-center">Doctor's Dashboard</h3>
+                <h3 class="text-center">John Doe's Dashboard</h3>
             </div>
     
             <ul class="list-unstyled components">
-                
-                <li class="active">
-                    <a href="#">Patients</a>
-                </li>
-                
                 <li>
+                    <a href="">John Doe's Dashboard</a>
+                </li>
+                <li class="active">
                     <a href="#">Log out</a>
                 </li>
-                
             </ul>
         </nav>
         
@@ -42,32 +34,45 @@
             <div id="sidebarCollapse">
                 <img src="assets/img/menu.svg" alt="">
             </div>
-            <h1 class="p-3 bg-primary text-white">Patient 101's Dashboard</h1>
-            
+            <h1 class="bg-primary text-light p-3">John Doe</h1>
             <div class="row p-3">
-                <div class="col col-12 col-lg-8 col-md-10 mx-auto mb-3">
-                    <a href="" class="btn btn-danger mb-3">Add precription</a>
-                    <a href="" class="btn btn-primary mb-3">Add  Medical Report</a>
-
+                <div class="col col-12 col-md-11 col-lg-10 mx-auto mb-3">
                     <div class="card">
-                        <h2 class="m-1 p-2 text-center font-weight-bold">Patient's details</h2>
-                        <hr>
                         <div class="row">
-                            <div class="col  p-2 col-11 col-sm-11 col-md-5 mx-auto flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">Name: </h5>
-                                <p class="p-1 m-1 font-weight-bold text-dark">Naseem Shah</p>
+                            <div class="col-12 col-lg-4 border-right">
+                                <div class="col-10 mx-auto p-3">
+                                    <img src="assets/img/naseem.jpg" alt="" class="dp rounded-circle img-thumbnail">
+                                    <h4 class="mx-auto font-weight-bold text-center">Naseem Shah</h4>
+                                    <p class="name text-dark my-2 mx-auto text-center">@ns4k_tv</p>
+                                </div>
                             </div>
-                            <div class="col   p-2 col-11 col-sm-11 col-md-5 mx-auto flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">Age: </h5>
-                                <p class="p-1 m-1 font-weight-bold text-dark">22</p>
-                            </div>
-                            <div class="col   p-2 col-11 col-sm-11 col-md-5 mx-auto flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white" >Gender: </h5>
-                                <p class="p-1 m-1 font-weight-bold text-dark">Male</p>
-                            </div>
-                            <div class="col   p-2 col-11 col-sm-11 col-md-5 mx-auto flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">Patient ID:</h5>
-                                <p class="p-1 m-1 font-weight-bold text-dark">1145</p>
+                            <div class="col-lg-8 border-left">
+                                <div class="row mt-3">
+                                    <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
+                                        <h5>Gender</h5>
+                                        <p>Male</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
+                                        <h5>DOB</h5>
+                                        <p>21/03/1999</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
+                                        <h5>Phone</h5>
+                                        <p>2389798237</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
+                                        <h5>Patient ID</h5>
+                                        <p>4563</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
+                                        <h5>Status</h5>
+                                        <p>Active</p>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
+                                        <h5>Gender</h5>
+                                        <p>Male</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -124,22 +129,18 @@
                         </div>
                     </div>
                 </div>
-            </div>         
+            </div> 
         </div>
-            
-            
-
-        
     </div>
-    
-      <script>
-        $(document).ready(function () {
 
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
+    <script>
+    $(document).ready(function () {
 
-        });
-      </script>
+    $('#sidebarCollapse').on('click', function () {
+        $('#sidebar').toggleClass('active');
+    });
+
+    });
+    </script>
 </body>
 </html>

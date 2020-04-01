@@ -149,10 +149,6 @@ ul ul a {
     font-size: 20px;
 }
 
-.header-content{
-    font-size: 40px;
-}
-
 /* Media Queries */
 
 @media (max-width: 768px) {

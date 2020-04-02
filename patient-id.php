@@ -1,3 +1,9 @@
+<?php
+        include 'config.php';
+
+?>
+
+
 <!-- 39th linil anu ningal coe ezhuthendath -->
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +49,7 @@
             <div id="sidebarCollapse">
                 <img src="assets/img/menu.svg" alt="">
             </div>
-            <h1 class="p-3 bg-primary text-white">Patient 101's Dashboard</h1>
+            <h1 class="p-3 bg-primary text-white"><?php  echo $_SESSION["username"] ?>'s Dashboard</h1>
             
             <div class="row p-3">
                 <div class="col col-12 col-lg-8 col-md-10 mx-auto mb-3">

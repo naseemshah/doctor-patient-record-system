@@ -1,3 +1,9 @@
+<?php
+        include 'assets/php/config.php';
+        
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +23,7 @@
             <div class="sidebar-header">
                 <p class="font-weight-bold text-light govtText" >Doctor X's Clinic</p>
                 
-                <h3 class="text-center">John Doe's Dashboard</h3>
+                <h3 class="text-center"><?php echo $_SESSION["p_id"] ?>'s Dashboard</h3>
             </div>
     
             <ul class="list-unstyled components">
@@ -25,7 +31,7 @@
                     <a href="">John Doe's Dashboard</a>
                 </li>
                 <li class="active">
-                    <a href="#">Log out</a>
+                    <a href="logout">Log out</a>
                 </li>
             </ul>
         </nav>

@@ -1,4 +1,8 @@
-<!-- 39th linil anu ningal coe ezhuthendath -->
+<?php
+    include 'assets/php/config.php';
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>

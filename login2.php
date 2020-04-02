@@ -1,21 +1,42 @@
 <?php 
-    include "config.php";
+    include 'assets/php/config.php';
+        
         if(isset($_POST["username"])){
             $username = $_POST["username"];
             $password = $_POST["password"];
-            $sql = "SELECT * FROM doctor WHERE username=".'"'.$username.'"'." AND password=".'"'.$password.'"'.";";
-            echo $sql;
+            //for Patient check
+            $sql = "SELECT * FROM patient WHERE username=".'"'.$username.'"'." AND password=".'"'.$password.'"'.";";
             $result = mysqli_query($conn, $sql);
             $resultCheck = mysqli_num_rows($result);
+            //for Doctor Check
+            $sql2 = "SELECT * FROM doctor WHERE username=".'"'.$username.'"'." AND password=".'"'.$password.'"'.";";
+            $result2 = mysqli_query($conn, $sql2);
+            $resultCheck2 = mysqli_num_rows($result2);
+            //if Patient
             if($resultCheck>0){
-            
-                $_SESSION["username"] = $username;
-                header('Location:/patient-id');
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["p_id"] = $row["p_id"];
+                $_SESSION["isDoc"] = false;
+                $_SESSION["isLogin"] = true;
                 
-            }
+                    header('Location:/patient-dash');    
+               
+                            
+            }elseif($resultCheck2>0){ //else if doctor
 
+                $row = mysqli_fetch_assoc($result);
+                $_SESSION["isLogin"] = true;
+                $_SESSION["p_id"] = false;
+                $_SESSION["isDoc"] = true;
+               
+                header('Location:/doctordash');
+                
+            }            
+            else{
+                echo '<div class="col col-4 mt-3 mx-auto alert alert-danger" role="alert"><strong>No User Found!</strong> Please Try Again! </div>';
+            }
         }
-    
+        
     
 
 ?>
@@ -34,6 +55,7 @@
     <!--   -->
 </head>
 <body class="bg-secondary">
+    
     <div class="container">
         <form action="" method="post">
             <div class="row">

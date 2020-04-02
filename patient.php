@@ -1,5 +1,11 @@
 <?php
-        include 'config.php';
+        include 'assets/php/config.php';
+        include 'assets/php/logincheck.php';
+        if(($_SESSION['isDoc']==false)||(isset($_SESSION['p_id']) &&($_SESSION['p_id']!=$_GET['id']))){
+            
+            die('<strong>You have no Acess to this page!</strong> Please Try <a href="/login2">  Logging in Again!</a> with different account.');
+        }
+           
 
 ?>
 
@@ -39,7 +45,7 @@
                 </li>
                 
                 <li>
-                    <a href="#">Log out</a>
+                    <a href="logout">Log out</a>
                 </li>
                 
             </ul>
@@ -49,7 +55,7 @@
             <div id="sidebarCollapse">
                 <img src="assets/img/menu.svg" alt="">
             </div>
-            <h1 class="p-3 bg-primary text-white"><?php  echo $_SESSION["username"] ?>'s Dashboard</h1>
+            <h1 class="p-3 bg-primary text-white"><?php  echo $_GET["username"] ?>'s Dashboard</h1>
             
             <div class="row p-3">
                 <div class="col col-12 col-lg-8 col-md-10 mx-auto mb-3">

@@ -75,8 +75,8 @@
                                         <p>Active</p>
                                     </div>
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
-                                        <h5>Gender</h5>
-                                        <p>Male</p>
+                                        <h5>Age</h5>
+                                        <p>21</p>
                                     </div>
                                 </div>
                             </div>

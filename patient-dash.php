@@ -1,6 +1,6 @@
 <?php
         include 'assets/php/config.php';
-        
+
 ?>
 
 
@@ -85,14 +85,26 @@
                 </div>
             </div>
             <div class="row p-3">
-                <div class="col col-12 col-lg-6 col-md-6 mx-auto mt-3 mb-3">
+            <div class="col col-12 col-lg-6 col-md-6 mx-auto mt-3 mb-3">
                     <div class="card">
                         <h2 class="m-1 p-2 text-center font-weight-bold">Last Precription</h2>
                         <hr>
                         <div class="row">
                             <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
                                 <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
+                            </div>
+                            <div class="col p-2 m-1   col-lg-10  flex ">
                                 
+                                <p class="font-weight-bold text-dark p-3 m-1 text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
+                                    dskfclksdlknclksndlkc,
+                                    sdkclskdzlkfcs,
+                                    'dzxckjskjdnvkjsn'
+                                </p>
+                            </div>  
+                        </div>
+                        <div class="row collapse" id="collapsePrescription">
+                            <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
+                                <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
                             </div>
                             <div class="col p-2 m-1   col-lg-10  flex ">
                                 
@@ -105,19 +117,33 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <a href="" class="btn btn-primary m-2 float-right" >Show all Prescriptions</a>
+                                <a class="btn btn-primary m-2 float-right" id="prescriptionButton" data-toggle="collapse" href="#collapsePrescription" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Show all prescriptions
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col col-12 col-lg-6 col-md-6 mx-auto mt-3 mb-3">
                     <div class="card">
-                        <h2 class="m-1 p-2 text-center font-weight-bold">Last Medical report</h2>
+                        <h2 class="m-1 p-2 text-center font-weight-bold">Last Medical Report</h2>
                         <hr>
                         <div class="row">
                             <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
                                 <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
+                            </div>
+                            <div class="col p-2 m-1   col-lg-10  flex ">
                                 
+                                <p class="font-weight-bold text-dark p-3 m-1 text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
+                                    dskfclksdlknclksndlkc,
+                                    sdkclskdzlkfcs,
+                                    'dzxckjskjdnvkjsn'
+                                </p>
+                            </div>  
+                        </div>
+                        <div class="row collapse" id="collapseReport">
+                            <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
+                                <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
                             </div>
                             <div class="col p-2 m-1   col-lg-10  flex ">
                                 
@@ -130,7 +156,9 @@
                         </div>
                         <div class="row">
                             <div class="col">
-                                <a href="" class="btn btn-primary m-2 float-right" >Show all Medical Reports</a>
+                                <a class="btn btn-primary m-2 float-right" id="reportButton" data-toggle="collapse" href="#collapseReport" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                    Show all medical reports
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -146,6 +174,28 @@
         $('#sidebar').toggleClass('active');
     });
 
+    });
+
+    //script to change button text
+    const button1 = document.getElementById("prescriptionButton");
+    button1.addEventListener('click', function () {
+        console.log("Inside");
+        const prescription = document.getElementById("collapsePrescription");
+        if (prescription.classList.contains("show")) {
+            button1.textContent = "Show all prescriptions";
+        } else {
+            button1.textContent = "Hide all prescriptions";
+        }
+    });
+    const button2 = document.getElementById("reportButton");
+    button2.addEventListener('click', function () {
+        console.log("Inside");
+        const prescription = document.getElementById("collapseReport");
+        if (prescription.classList.contains("show")) {
+            button2.textContent = "Show all medical reports";
+        } else {
+            button2.textContent = "Hide all medical reports";
+        }
     });
     </script>
 </body>

@@ -1,5 +1,23 @@
 <?php
         include 'assets/php/config.php';
+        include 'assets/php/logincheck.php';
+        if($_SESSION['isDoc']==true){
+            die("Doctors can't Acess this dashboard. Try acessing via Doctor Dashboard");
+        }
+        $pid=$_SESSION['p_id'];
+        $sql = "SELECT *  FROM `patient` WHERE `p_id` =".$pid.";";        
+        $result = mysqli_query($conn, $sql);
+        $resultCheck = mysqli_num_rows($result);
+        if($resultCheck>0){
+            $row = mysqli_fetch_assoc($result);
+            $name= $row['name'];
+            $age = $row['age'];            
+            $gender = $row['gender'];  
+            $dob = $row['dob'];
+        }
+        $sql2 = "SELECT *  FROM `prescription` WHERE `pid` =".$pid." ORDER BY `date` DESC;";        
+        $result2 = mysqli_query($conn, $sql2);
+        $resultCheck2 = mysqli_num_rows($result2);
 
 ?>
 
@@ -23,12 +41,13 @@
             <div class="sidebar-header">
                 <p class="font-weight-bold text-light govtText" >Doctor X's Clinic</p>
                 
-                <h3 class="text-center"><?php echo $_SESSION["p_id"] ?>'s Dashboard</h3>
+                <h3 class="text-center"><?php echo $name ?>'s Dashboard</h3>
+               
             </div>
     
             <ul class="list-unstyled components">
                 <li>
-                    <a href="">John Doe's Dashboard</a>
+                    <a href=""><?php echo $name ?>'s Dashboard</a>
                 </li>
                 <li class="active">
                     <a href="logout">Log out</a>
@@ -37,10 +56,12 @@
         </nav>
         
         <div class="container-fluid p-0 dashboard-content">
+            
+            <h1 class="bg-primary text-light p-3">
             <div id="sidebarCollapse">
                 <img src="assets/img/menu.svg" alt="">
             </div>
-            <h1 class="bg-primary text-light p-3">John Doe</h1>
+            <?php echo $name ?></h1>
             <div class="row p-3">
                 <div class="col col-12 col-md-11 col-lg-10 mx-auto mb-3">
                     <div class="card">
@@ -48,19 +69,19 @@
                             <div class="col-12 col-lg-4 border-right">
                                 <div class="col-10 mx-auto p-3">
                                     <img src="assets/img/naseem.jpg" alt="" class="dp rounded-circle img-thumbnail">
-                                    <h4 class="mx-auto font-weight-bold text-center">Naseem Shah</h4>
-                                    <p class="name text-dark my-2 mx-auto text-center">@ns4k_tv</p>
+                                    <h4 class="mx-auto font-weight-bold text-center"><?php echo $name ?></h4>
+                                    <p class="name text-dark my-2 mx-auto text-center"><?php echo "P ID : ".$pid ?></p>
                                 </div>
                             </div>
                             <div class="col-lg-8 border-left">
                                 <div class="row mt-3">
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
                                         <h5>Gender</h5>
-                                        <p>Male</p>
+                                        <p><?php echo $gender ?></p>
                                     </div>
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
                                         <h5>DOB</h5>
-                                        <p>21/03/1999</p>
+                                        <p><?php echo $dob ?></p>
                                     </div>
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
                                         <h5>Phone</h5>
@@ -68,7 +89,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
                                         <h5>Patient ID</h5>
-                                        <p>4563</p>
+                                        <p><?php echo $pid ?></p>
                                     </div>
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
                                         <h5>Status</h5>
@@ -76,7 +97,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-4 py-3 my-3 mx-auto text-center text-lg-left">
                                         <h5>Age</h5>
-                                        <p>21</p>
+                                        <p><?php echo $age ?></p>
                                     </div>
                                 </div>
                             </div>
@@ -85,36 +106,55 @@
                 </div>
             </div>
             <div class="row p-3">
-            <div class="col col-12 col-lg-6 col-md-6 mx-auto mt-3 mb-3">
+            <div class="col col-12 col-lg-6 col-md-12 mx-auto mt-3 mb-3">
                     <div class="card">
                         <h2 class="m-1 p-2 text-center font-weight-bold">Last Precription</h2>
                         <hr>
-                        <div class="row">
-                            <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
-                            </div>
-                            <div class="col p-2 m-1   col-lg-10  flex ">
+                        <?php
+                            if($resultCheck2>0){
                                 
-                                <p class="font-weight-bold text-dark p-3 m-1 text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
-                                    dskfclksdlknclksndlkc,
-                                    sdkclskdzlkfcs,
-                                    'dzxckjskjdnvkjsn'
-                                </p>
-                            </div>  
-                        </div>
-                        <div class="row collapse" id="collapsePrescription">
-                            <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
-                            </div>
-                            <div class="col p-2 m-1   col-lg-10  flex ">
+                                for ($x = 0; $x < $resultCheck2; $x++) {
+                                    $row2 = mysqli_fetch_assoc($result2);
+                                    
+                                    if($x==0){
+                                        echo "<div class='row rounded bg-light m-2 p-1  shadow'>
+                                        <div class='col col-11 col-sm-11 col-md-5 flex'>
+                                            <h5 class='p-1 m-2 bg-dark rounded text-white shadow'>{$row2['date']}</h5>
+                                        </div>
+                                        <div class='col col-12  flex '>
+                                            <p class='font-weight-bold text-dark text-break'>
+                                            {$row2['prescription']}
+                                            </p>
+                                        </div>  
+                                    </div>";
+                                    }else{
+                                        echo "<div class='row rounded bg-light m-2 p-1 collapse shadow' id='collapsePrescription'>
+                                        <div class='col col-11 col-sm-11 col-md-5 flex'>
+                                            <h5 class='p-1 m-2 bg-dark rounded text-white shadow'>{$row2['date']}</h5>
+                                            
+                                        </div>
+                                        <div class='col col-12 flex '>
+                                            
+                                            <p class='font-weight-bold text-dark text-break'>
+                                            {$row2['prescription']}
+                                            </p>
+                                        </div>  
+                                    </div>";
+                                    }
+                                    
+                                }
+                                $row2=null;
                                 
-                                <p class="font-weight-bold text-dark p-3 m-1 text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
-                                    dskfclksdlknclksndlkc,
-                                    sdkclskdzlkfcs,
-                                    'dzxckjskjdnvkjsn'
-                                </p>
-                            </div>  
-                        </div>
+                            } else{
+                                echo '<div class="alert alert-secondary m-2" role="alert">
+                                No prescriptions Found
+                                </div>';
+                            }
+                        ?>
+                        
+                       
+
+                       
                         <div class="row">
                             <div class="col">
                                 <a class="btn btn-primary m-2 float-right" id="prescriptionButton" data-toggle="collapse" href="#collapsePrescription" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -124,36 +164,87 @@
                         </div>
                     </div>
                 </div>
-                <div class="col col-12 col-lg-6 col-md-6 mx-auto mt-3 mb-3">
+                <div class="col col-12 col-lg-6 col-md-12 mx-auto mt-3 mb-3">
                     <div class="card">
                         <h2 class="m-1 p-2 text-center font-weight-bold">Last Medical Report</h2>
                         <hr>
-                        <div class="row">
-                            <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
-                            </div>
-                            <div class="col p-2 m-1   col-lg-10  flex ">
+                        <?php
+                            $result2 = mysqli_query($conn, $sql2);
+                            $resultCheck2 = mysqli_num_rows($result2);
+
+                            if($resultCheck2>0){
                                 
-                                <p class="font-weight-bold text-dark p-3 m-1 text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
+                                for ($x = 0; $x < $resultCheck2; $x++) {
+                                    
+                                    $row2 = mysqli_fetch_assoc($result2);
+                                    
+                                    if($x==0){
+                                        echo "<div class='row rounded bg-light m-2 p-1  shadow'>
+                                        <div class='col col-11 col-sm-11 col-md-5 flex'>
+                                            <h5 class='p-1 m-2 bg-dark rounded text-white shadow'>{$row2['date']}</h5>
+                                        </div>
+                                        <div class='col col-12  flex '>
+                                            <p class='font-weight-bold text-dark text-break'>
+                                            {$row2['report']}
+                                            </p>
+                                        </div>  
+                                    </div>";
+                                    }else{
+                                        echo "<div class='row rounded bg-light m-2 p-1 collapse shadow' id='collapseReport'>
+                                        <div class='col col-11 col-sm-11 col-md-5 flex'>
+                                            <h5 class='p-1 m-2 bg-dark rounded text-white shadow'>{$row2['date']}</h5>
+                                            
+                                        </div>
+                                        <div class='col col-12 flex '>
+                                            
+                                            <p class='font-weight-bold text-dark text-break'>
+                                            {$row2['report']}
+                                            </p>
+                                        </div>  
+                                    </div>";
+                                    }
+                                    
+                                }
+                                
+                                
+                            } else{
+                                echo '<div class="alert alert-secondary m-2" role="alert">
+                                No prescriptions Found
+                                </div>';
+                            }
+                        ?>
+
+                        <!-- <div class="row rounded bg-light m-2 p-1  shadow">
+                            <div class="col col-11 col-sm-11 col-md-5 flex">
+                                <h5 class="p-1 m-2 bg-dark rounded text-white shadow">12/03/2020</h5>
+                                
+                            </div>
+                            <div class="col col-lg-10  flex ">
+                                
+                                <p class="font-weight-bold text-dark text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
                                     dskfclksdlknclksndlkc,
                                     sdkclskdzlkfcs,
                                     'dzxckjskjdnvkjsn'
                                 </p>
                             </div>  
                         </div>
-                        <div class="row collapse" id="collapseReport">
-                            <div class="col ml-3 p-2 col-11 col-sm-11 col-md-5 flex">
-                                <h5 class="p-1 m-1 bg-dark rounded text-white">12/03/2020</h5>
-                            </div>
-                            <div class="col p-2 m-1   col-lg-10  flex ">
+                        <div class="row rounded bg-light m-2 p-1 collapse shadow" id="collapseReport">
+                            <div class="col col-11 col-sm-11 col-md-5 flex">
+                                <h5 class="p-1 m-2 bg-dark rounded text-white shadow">12/03/2020</h5>
                                 
-                                <p class="font-weight-bold text-dark p-3 m-1 text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
+                            </div>
+                            <div class="col col-lg-10  flex ">
+                                
+                                <p class="font-weight-bold text-dark text-break">sjnjsnzjn,sahdbasbkdb,sadbkjaszjkdn,slzdnlkasnz,skjjbdcj,sdbckjsd
                                     dskfclksdlknclksndlkc,
                                     sdkclskdzlkfcs,
                                     'dzxckjskjdnvkjsn'
                                 </p>
                             </div>  
-                        </div>
+                        </div> -->
+                        
+
+                        
                         <div class="row">
                             <div class="col">
                                 <a class="btn btn-primary m-2 float-right" id="reportButton" data-toggle="collapse" href="#collapseReport" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -163,7 +254,7 @@
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 

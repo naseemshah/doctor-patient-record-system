@@ -85,7 +85,7 @@
                             <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon2"></span>
                             </div>
-                            <input type="password" name="password" class="form-control" placeholder="Type your Password here" aria-label="Username " aria-describedby="basic-addon1">
+                            <input type="password" name="password" class="form-control" placeholder="Type your Password here" aria-label="Username " aria-describedby="basic-addon1" required>
                             </div>
                             </div>
                         </div>

@@ -1,5 +1,9 @@
 <?php
     include 'assets/php/config.php';
+    include 'assets/php/logincheck.php';
+    if($_SESSION["isDoc"]!=true){
+      die ("You have no acess!");
+    }
 
 ?>
 

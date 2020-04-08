@@ -43,6 +43,7 @@
         }
     </style>
     <title>Dashboard</title>
+    <link rel="icon" href="assets/img/title-icon.png">
 </head>
 <body>
     <div class="wrapper">

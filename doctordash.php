@@ -2,8 +2,30 @@
     include 'assets/php/config.php';
     include 'assets/php/logincheck.php';
     if($_SESSION["isDoc"]!=true){
-      die ("You have no acess!");
+      die ("<h1>YOU HAVE NO ACCESS</h1>");
+      
     }
+
+    $sql = "SELECT * FROM `doctor`";
+    $result=mysqli_query($conn,$sql);
+    $resultCheck= mysqli_num_rows($result);
+   
+    
+    if($resultCheck>0){
+      $row = mysqli_fetch_assoc($result);
+      $name = $row['name'];
+      $age = $row['age'];
+      $phone = $row['phone'];
+    }
+
+
+    $sqlp = "SELECT * FROM `patient`";
+    $resultp = mysqli_query($conn,$sqlp);
+    $resultCheck = mysqli_num_rows($resultp);
+
+
+    
+
 
 ?>
 
@@ -18,7 +40,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/dashboardstyle.css">
     <title>Dashboard</title>
-    <link rel="icon" href="assets/img/title-icon.png">
 </head>
 <body>
     <div class="wrapper">
@@ -38,21 +59,25 @@
                 
                 <li class="active">
                     <p style="background-color:blue; padding-left: 15px;">Dashboard</p>
-                    <p class="sidedoc">Doc name <br> <br> Doc phone <br> <br>Doc age</p>
+                    <p class="sidedoc"><?php echo $name; ?> <br> <br> <?php echo $phone; ?> <br> <br><?php echo $age; ?></p>
                     
 
-                    
+                     
                 </li>
                 
                 <li class="addpat">
-                    <a href="#" style="padding-left: 15px;">Add Patients +</a>
+                    <a href="/form" style="padding-left: 15px;">Add Patients +</a>
+                </li>
+                <div>
+                <br>
+                </div>
+                <li class="addpat">    
+                    <a href="/logout" style="padding-left: 15px;">Logout</a>
                 </li>
                 
             </ul>
               
-            <div class=" navbar" style="background-color: blue;">
-              <a href="#" style="padding-left: 15px;">Logout</a>                                                              
-            </div>
+           
             
         
           </nav>
@@ -78,39 +103,46 @@
             </ul>
 
             <div class="row row-cols-1 row-cols-md-3" style="padding-left: 10px; padding-right: 15px;">
-                <div class="col mb-4">
-                  <div class="card">
-                    <img src="assets/img/clouds.jpg" class="img-thumbnail" alt="...">
-                    <div class="card-body" style="background-color: aquamarine;">
-                      <h5 class="card-title">PATIENTS</h5>
-                      <p class="card-text" style="color: black; font-family: monospace;">PATIENTS REPORT</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col md-3">
-                  <div class="card">
-                    <img src="assets/img/clouds.jpg" class="img-thumbnail" alt="...">
-                    <div class="card-body" style="background-color: coral;">
-                      <h5 class="card-title">PATIENTS</h5>
-                      <p class="card-text"style="color: black; font-family: monospace;">PATIENTS REPORT</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col md-3">
-                  <div class="card">
-                    <img src="assets/img/clouds.jpg" class="img-thumbnail" alt="...">
-                    <div class="card-body" style="background-color: cornflowerblue;">
-                      <h5 class="card-title">PATIENTS</h5>
-                      <p class="card-text"style="color: black; font-family: monospace;">PATIENTS REPORT</p>
-                    </div>
-                  </div>
-                </div>
-                
-            </div>
+            
+            <?php
+               if($resultCheck>0){
+                 while($row=mysqli_fetch_assoc($resultp)){
+                   echo "<div class='col mb-4'>
+                            <div class='card'>
+                              
+                              <div class='card-body' id='rcorners' style='background-color: white;'>
+                                 <h5 class='card-title'><u>{$row['name']}</u></h5>
+                                 <p class='card-text' id='pid' style='color: grey; font-family: monospace; font-size:16pt;'>Patient Id:{$row['p_id']}</p>
+                                 <p class='card-text' style='color: grey; font-family: monospace; font-size:16pt;'>{$row['gender']}<br>{$row['dob']}<br>{$row['age']}</p>
+                                 <a href='/patient?id={$row['p_id']}'>
+                                     <div class='btn-btn-primary'>more</div>
+                                 </a>
+                                 
+                                 </div>
+                            </div>
+                          </div>";
+                         
+                 }
+               }
+            ?>  
+            
 
+
+            <?php
+if (isset($_POST['submit'])){
+  header("Location: /login2");
+}
+?>
+
+
+
+                
+                
+           
 
 
             
+
 
 
         </div>
@@ -128,6 +160,10 @@
         });
 
         });
+
+
+       
+    });
       </script>
 </body>
 </html>

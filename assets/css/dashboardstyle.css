@@ -61,6 +61,11 @@ a, a:hover, a:focus {
     padding: 10px;
 }
 
+.card-body{
+    border-radius: 10px;
+    border: 2px solid blue;
+}
+
 #sidebar ul li a {
     padding: 10px;
     font-size: 1.1em;
